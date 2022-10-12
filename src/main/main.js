@@ -1,16 +1,30 @@
+
 import "./styles.scss";
-import {useState} from "react";
+import {useState,useEffect} from "react";
+
 
 function CardList() {
-    const [list,setList] = useState([
-        {id: 1, number: 74},
-        {id: 2, number: 48},
-        {id: 3, number: 65},
-        {id: 4, number: 27},
-    ])
+
+    const [list, setList] = useState([]);
+
+    // const { transactionData } = props;
+    //
+    // useEffect(() => {
+    //     setList(transactionData)
+    // }, [transactionData]);
+
+
+    function randomNumberInRange(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    const handleClick = () => {
+        setList(randomNumberInRange(2,50));
+    };
+
 
     function removeList(id) {
-        const newList = list.filter((i) => i.id !== id);
+        const newList = list.filter((item) => item.id !== id);
         setList(newList);
     }
     return (
@@ -19,11 +33,16 @@ function CardList() {
             <ul>
                 {
                     list.map((todo) => {
-                    return <li key={todo.id}>{todo.number}
-                    <span onClick={() => removeList(todo.id)}>x</span></li>
+                        return <li key={todo.id}>{todo.number}
+                            <span onClick={() => removeList(todo.id)}>x</span></li>
+
                     })
+
                 }
             </ul>
+
+            <button onClick={handleClick}></button>
+
         </div>
     )
 }
