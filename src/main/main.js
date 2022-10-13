@@ -1,8 +1,8 @@
 import "./styles.scss";
 import {useState, useEffect} from "react";
 
-function CardList() {
-    const [list,setList] = useState(Math.random())
+function CardList(props) {
+    const [list,setList] = useState()
     const [count, setCount] = useState([
         {
             data: [0],
@@ -12,7 +12,7 @@ function CardList() {
     ]);
 
     useEffect(() => {
-      setList(list)
+      setList(list);
     });
 
     function removeList(id) {
@@ -21,22 +21,18 @@ function CardList() {
     }
 
     return (
+        <div>
 
-        <div className="h">
-            <div>
-                {
-                    count.map((todo) => {
-                        return <div className="square" key={todo.id}>
-                            <p>{list}</p>
-                            <p className="remove" onClick={() => removeList(todo.id)}>
-                                   X
-                            </p>
+           {
+             count.map((todo) => {
 
-                        </div>
+               return <div className="square" key={todo.id}>
+                       <p>{props.list}</p>
+                       <p className="remove" onClick={() => removeList(todo.id)}>X</p>
+                    </div>
+              })
+            }
 
-                    })
-                }
-                </div>
         </div>
     )
 }
