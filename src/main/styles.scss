@@ -1,27 +1,29 @@
 .container {
-  display: flex;
   flex-direction: column;
   overflow: auto;
-  ul {
+  div {
     list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
 
-    li {
-      width: 270px;
-      height: 150px;
-      border: 1px solid red;
-      font-size: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      span {
-        display: flex;
-        justify-content: end;
-        margin-left: 10px;
-        color: red;
-        cursor: pointer;
+      .square {
+        border:1px solid darkseagreen;
+        border-radius: 3px;
+        width: 200px;
+        height: 70px;
+        margin: 20px;
+
+      .remove {
+        position: relative;
+        top: 0;
+        left: 2px;
+        color: darkseagreen;
+        cursor:pointer;
+        font-family: sans-serif;
+        font-size:13px;
       }
-    }
+
   }
+     }
 }
