@@ -9,7 +9,7 @@ function Header() {
         setInitialstate([...initialstate,
             <CardList list={randomNumberInRange(100,900)}
                       removeHandler={removeList}
-                      sortHandler={func}/>])
+                      sortHandler={myFunction}/>])
     };
 
     function randomNumberInRange(min,max) {
@@ -21,7 +21,7 @@ function Header() {
         setInitialstate(newList);
     }
 
-    function func() {
+    function myFunction() {
         const numDescending = [...initialstate].sort((a, b) => b.id - a.id);
         setInitialstate(numDescending)
     }
@@ -29,7 +29,7 @@ function Header() {
     return (
         <div className="header">
                 <button onClick={handleClick}>add card</button>
-                <button onClick={func}>sorts cards</button>
+                <button onClick={myFunction}>sorts cards</button>
                 {initialstate}
         </div>
     )
